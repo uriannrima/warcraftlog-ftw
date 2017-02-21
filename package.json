@@ -1,0 +1,25 @@
+{
+  "name": "warcraftlog-ftw",
+  "version": "1.0.0",
+  "description": "Projeto para recuperar perfomance de jogadores no WarcraftLogs.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uriannrima/warcraftlog-ftw.git"
+  },
+  "author": "Luciano Lima; Luiz Costa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uriannrima/warcraftlog-ftw/issues"
+  },
+  "homepage": "https://github.com/uriannrima/warcraftlog-ftw#readme",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-ui-router": "^0.4.2",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}
