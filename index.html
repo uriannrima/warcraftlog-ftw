@@ -1,18 +1,15 @@
 <!doctype html>
-<html lang="pt-br">
-
+<html lang="en" ng-app="warcraftlogs-ftw">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Warcraftlogs FTW</title>
-    <meta name="description" content="">
+    <title>Warcraft Logs - FTW</title>
 </head>
 
-<body ng-app="warcraftlogs-ftw">
+<body>
+    <h1>Warcraft Logs For Everyone?</h1>
     <div ui-view></div>
+    <p></p>
 
-    <!-- NPM Scripts-->
-    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <!-- Angular Scripts -->
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 
@@ -20,6 +17,8 @@
     <script src="app/app.module.js"></script>
     <script src="app/app.routes.js"></script>
 
+    <!-- Home -->
+    <script src="app/home/home-controller.js"></script>
     <!-- Ranking -->
     <script src="app/ranking/ranking-controller.js"></script>
 </body>

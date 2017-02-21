@@ -1,8 +1,7 @@
-'use strict';
-
 angular.module('warcraftlogs-ftw', [
     'warcraftlogs-ftw.router',
-    'ui.router'
+    'ui.router',
+    'ngRoute'
 ]).run(function ($rootScope) {
     $rootScope.ApplicationMessage = "Application level message";
 });
