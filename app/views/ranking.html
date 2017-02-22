@@ -7,7 +7,7 @@
         <input type="text" ng-model="parameters.serverName" />
     </div>
     <div>
-        <label>Server Region</label>        
+        <label>Server Region</label>
         <select name="serverRegion" ng-model="parameters.serverRegion">
             <option value="US">US</option>
             <option value="EU">EU</option>
@@ -33,6 +33,7 @@
 <div>
     {{parameters}}
 </div>
+<br/>
 <div ng-if="rankingList">
     <div>
         <label>Guild</label>
@@ -54,12 +55,13 @@
     </div>
     <div>
         <label>% Perfomance</label>
-        <input type="range" name="range" ng-model="perfomanceSearch" min="0"  max="100">
+        <input type="range" name="range" ng-model="perfomanceSearch" min="0" max="100">
         <label>{{perfomanceSearch}}%</label>
     </div>
     <div>
         {{search}}
     </div>
+    <br/>
     <div>
         <div ng-repeat="ranking in rankingList | filter:search | greaterThanEquals:'total':totalSearch | perfomanceFilter:perfomanceSearch">
             {{ranking | json}}
