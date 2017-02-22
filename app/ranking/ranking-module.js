@@ -1,0 +1,1 @@
+angular.module('warcraftlogs-ftw.ranking', ['ngResource']);

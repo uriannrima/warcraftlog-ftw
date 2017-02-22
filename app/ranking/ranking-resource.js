@@ -1,12 +1,14 @@
 'use strict';
-angular.module('warcraftlogs-ftw.ranking', ['$resource']).factory('rankingResource', function ($resource) {
+angular.module('warcraftlogs-ftw.ranking').factory('rankingResource', function ($resource) {
     var serviceUrl = 'https://www.warcraftlogs.com:443/v1/rankings/character/:characterName/:serverName/:serverRegion';
-    var serviceMethods = {
-        get: {
-            method: 'GET',
-            cache: false,
-            isArray: true
-        }
+
+    var paramDefaults = {
+        characterName: '@characterName',
+        serverName: '@serverName',
+        serverRegion: '@serverRegion',
+        metric: '@metric',
+        api_key: '4a91976b519daeb594b0cf6dc08af19c'
     };
-    return $resource(serviceUrl, {}, serviceMethods);
+
+    return $resource(serviceUrl, paramDefaults);
 });

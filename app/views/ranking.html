@@ -2,6 +2,29 @@
     {{rankingMessage}}
 </div>
 <div>
-    {{ranking}}
+    <div>
+        <label>Server Name</label>
+        <input type="text" ng-model="parameters.serverName" />
+    </div>
+    <div>
+        <label>Server Region</label>
+        <input type="text" ng-model="parameters.serverRegion" />
+    </div>
+    <div>
+        <label>Character Name</label>
+        <input type="text" ng-model="parameters.characterName" />
+    </div>
+    <div>
+        <label>Metric</label>
+        <select name="metric" ng-model="parameters.metric">
+            <option value="dps">DPS</option>
+            <option value="healer">Healer</option>
+            <option value="tank">Tank</option>
+        </select>
+    </div>
+    <input type="button" ng-click="searchRanking()" value="Search" />
+</div>
+<div>
+    {{parameters}} {{rankingList | json}}
 </div>
 <a ui-sref="home">Go to Home</a>

@@ -10,5 +10,7 @@ server.use(express.static('./'));
 // Dev task
 gulp.task('dev', function () {
     // Start webserver
-    server.listen(serverport);
+    server.listen(serverport, function () {
+        console.log("Server is running on port: ", serverport);
+    });
 });
