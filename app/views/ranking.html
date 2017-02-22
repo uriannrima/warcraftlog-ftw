@@ -7,8 +7,14 @@
         <input type="text" ng-model="parameters.serverName" />
     </div>
     <div>
-        <label>Server Region</label>
-        <input type="text" ng-model="parameters.serverRegion" />
+        <label>Server Region</label>        
+        <select name="serverRegion" ng-model="parameters.serverRegion">
+            <option value="US">US</option>
+            <option value="EU">EU</option>
+            <option value="KR">KR</option>
+            <option value="TW">TW</option>
+            <option value="CN">CN</option>
+        </select>
     </div>
     <div>
         <label>Character Name</label>
@@ -25,6 +31,38 @@
     <input type="button" ng-click="searchRanking()" value="Search" />
 </div>
 <div>
-    {{parameters}} {{rankingList | json}}
+    {{parameters}}
+</div>
+<div ng-if="rankingList">
+    <div>
+        <label>Guild</label>
+        <input type="text" ng-model="search.guild" />
+    </div>
+    <div>
+        <label>Difficulty</label>
+        <select name="difficulty" ng-model="search.difficulty">
+            <option value="">All</option>
+            <option value="1">LFR</option>
+            <option value="3">Normal</option>
+            <option value="4">Heroic</option>
+            <option value="5">Mythic</option>
+        </select>
+    </div>
+    <div>
+        <label>DPS/HPS Total</label>
+        <input type="text" ng-model="totalSearch" />
+    </div>
+    <div>
+        <label>Ratio</label>
+        <input type="text" ng-model="ratioSearch" />
+    </div>
+    <div>
+        {{search}}
+    </div>
+    <div>
+        <div ng-repeat="ranking in rankingList | filter:search | greaterThanEquals:'total':totalSearch | ratioFilter:ratioSearch">
+            {{ranking | json}}
+        </div>
+    </div>
 </div>
 <a ui-sref="home">Go to Home</a>

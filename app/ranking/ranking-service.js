@@ -1,5 +1,5 @@
 'use strict';
-angular.module('warcraftlogs-ftw.ranking').factory('rankingService', ['rankingResource', function (rankingResource) {
+angular.module('warcraftlogs-ftw.ranking').factory('rankingService', ['$q', 'rankingResource', function ($q, rankingResource) {
     // For private variables.
     var vm = this;
 
@@ -7,12 +7,15 @@ angular.module('warcraftlogs-ftw.ranking').factory('rankingService', ['rankingRe
     var service = {};
 
     service.getRankings = function (parameters) {
-        return rankingResource.query({
-            serverName: parameters.serverName,
-            serverRegion: parameters.serverRegion,
-            characterName: parameters.characterName,
-            metric: parameters.metric
-        }).$promise;
+        var deferred = $q.defer();
+
+        rankingResource.query(parameters).$promise.then(function (serverData) {
+            deferred.resolve(serverData);
+        }, function (reason) {
+            deferred.reject(reason);
+        });
+
+        return deferred.promise;
     };
 
     return service;
