@@ -4,14 +4,15 @@ angular.module('warcraftlogs-ftw').controller('RankingController', ['$scope', '$
 
     vm.setRankingList = function (rankingList) {
         angular.forEach(rankingList, function (ranking) {
-            ranking.url = "https://www.warcraftlogs.com/reports/" + ranking.reportID + "#fight=" + ranking.fightID + "&type=damage-done";
+            var type = $scope.parameters.metric == "hps" ? "healing" : "damage-done";
+            ranking.url = "https://www.warcraftlogs.com/reports/" + ranking.reportID + "#fight=" + ranking.fightID + "&type=" + type;
         });
         $scope.rankingList = rankingList;
     };
 
     $scope.searchRanking = function () {
         var parameters = $scope.parameters;
-        rankingService.getRankings(parameters).then(vm.setRankingList, function (reason) {
+        rankingService.getCharacterRankings(parameters).then(vm.setRankingList, function (reason) {
             console.log("Error has ocurred: ", reason);
         });
     };
@@ -31,7 +32,7 @@ angular.module('warcraftlogs-ftw').controller('RankingController', ['$scope', '$
     return function (inputArray, perfomanceParameter) {
         var perfomanceValue = perfomanceParameter / 100;
         var output = inputArray.filter(function (item) {
-            if (perfomanceParameter === undefined || (1  - (item.rank / item.outOf)) >= perfomanceValue) {
+            if (perfomanceParameter === undefined || (1 - (item.rank / item.outOf)) >= perfomanceValue) {
                 return item;
             }
         });

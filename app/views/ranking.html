@@ -24,8 +24,10 @@
         <label>Metric</label>
         <select name="metric" ng-model="parameters.metric">
             <option value="dps">DPS</option>
-            <option value="healer">Healer</option>
-            <option value="tank">Tank</option>
+            <option value="hps">HPS</option>
+            <option value="tankhps">Tank HPS</option>
+            <option value="krsi">Tank Survivability</option>
+            <option value="playerspeed">Player Speed</option>
         </select>
     </div>
     <input type="button" ng-click="searchRanking()" value="Search" />
@@ -64,7 +66,9 @@
     <br/>
     <div>
         <div ng-repeat="ranking in rankingList | filter:search | greaterThanEquals:'total':totalSearch | perfomanceFilter:perfomanceSearch">
-            {{ranking | json}}
+            <div>
+                {{ranking | json}}
+            </div>
         </div>
     </div>
 </div>
