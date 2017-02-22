@@ -27,11 +27,11 @@ angular.module('warcraftlogs-ftw').controller('RankingController', ['$scope', '$
 
         return output;
     };
-}).filter('ratioFilter', function () {
-    return function (inputArray, ratioParameter) {
-        var ratioValue = ratioParameter / 100;
+}).filter('perfomanceFilter', function () {
+    return function (inputArray, perfomanceParameter) {
+        var perfomanceValue = perfomanceParameter / 100;
         var output = inputArray.filter(function (item) {
-            if (ratioParameter === undefined || item.rank / item.outOf >= ratioValue) {
+            if (perfomanceParameter === undefined || (1  - (item.rank / item.outOf)) >= perfomanceValue) {
                 return item;
             }
         });

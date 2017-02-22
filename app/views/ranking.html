@@ -53,14 +53,15 @@
         <input type="text" ng-model="totalSearch" />
     </div>
     <div>
-        <label>Ratio</label>
-        <input type="text" ng-model="ratioSearch" />
+        <label>% Perfomance</label>
+        <input type="range" name="range" ng-model="perfomanceSearch" min="0"  max="100">
+        <label>{{perfomanceSearch}}%</label>
     </div>
     <div>
         {{search}}
     </div>
     <div>
-        <div ng-repeat="ranking in rankingList | filter:search | greaterThanEquals:'total':totalSearch | ratioFilter:ratioSearch">
+        <div ng-repeat="ranking in rankingList | filter:search | greaterThanEquals:'total':totalSearch | perfomanceFilter:perfomanceSearch">
             {{ranking | json}}
         </div>
     </div>
