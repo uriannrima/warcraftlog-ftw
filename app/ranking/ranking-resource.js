@@ -1,18 +1,18 @@
 'use strict';
-angular.module('warcraftlogs-ftw.ranking').factory('characterRankingResource', function ($resource) {
-    var serviceUrl = 'https://www.warcraftlogs.com:443/v1/rankings/character/:characterName/:serverName/:serverRegion';
+angular.module('warcraftlogs-ftw.ranking').factory('characterRankingResource', ['WARCRAFT_LOGS', '$resource', function (WarcraftLogs, $resource) {
+    var serviceUrl = WarcraftLogs.ApiUrl + '/rankings/character/:characterName/:serverName/:serverRegion';
 
     var paramDefaults = {
         characterName: '@characterName',
         serverName: '@serverName',
         serverRegion: '@serverRegion',
         metric: '@metric',
-        api_key: '4a91976b519daeb594b0cf6dc08af19c'
+        api_key: WarcraftLogs.ApiKey
     };
 
     return $resource(serviceUrl, paramDefaults);
-}).factory('encounterRankingResource', function ($resource) {
-    var serviceUrl = 'https://www.warcraftlogs.com:443/v1/rankings/encounter/:encounterId';
+}]).factory('encounterRankingResource', ['WARCRAFT_LOGS', '$resource', function (WarcraftLogs, $resource) {
+    var serviceUrl = WarcraftLogs.ApiUrl + '/rankings/encounter/:encounterId';
 
     var paramDefaults = {
         encounterId: '@encounterId',
@@ -22,8 +22,8 @@ angular.module('warcraftlogs-ftw.ranking').factory('characterRankingResource', f
         spec: '@spec',
         server: '@server',
         region: '@region',
-        api_key: '4a91976b519daeb594b0cf6dc08af19c'
+        api_key: WarcraftLogs.ApiKey
     };
 
     return $resource(serviceUrl, paramDefaults);
-});
+}]);

@@ -36,10 +36,19 @@
     {{parameters}}
 </div>
 <br/>
-<div ng-if="rankingList">
+<div ng-if="rankingList.length > 0">
     <div>
         <label>Guild</label>
         <input type="text" ng-model="search.guild" />
+    </div>
+    <div>
+        <label>Encounter</label>
+        <select name="metric" ng-model="search.encounter">
+            <option value="">All</option>
+            <option ng-repeat="encounter in encounterList" value="{{encounter.id}}">
+                {{encounter.name}}
+            </div>
+        </select>
     </div>
     <div>
         <label>Difficulty</label>
